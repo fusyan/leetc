@@ -1,20 +1,24 @@
 class Solution {
 public:
-    bool eraseChar(string& str, string s, bool isAlice) {
-        // s: AAA or BBB
-        int pos = str.find(s);
-        if (pos != std::string::npos) {
-            str.erase(pos, 1);
-            return true;
-        } else {
+    bool winnerOfGame(string colors) {
+        int size = colors.size();
+        
+        if (size < 3) {
             return false;
         }
-    }
-    
-    bool winnerOfGame(string colors) {
-        while (1) {
-            if (!eraseChar(colors, "AAA", true)) return false;
-            if (!eraseChar(colors, "BBB", false)) return true;
+            
+        int countA = 0;
+        int countB = 0;
+        
+        for (int i=1; i<size-1; i++) {
+            if (colors[i-1]=='A' and colors[i]=='A' and colors[i+1]=='A') {
+                countA++;
+            }
+            if (colors[i-1]=='B' and colors[i]=='B' and colors[i+1]=='B') {
+                countB++;
+            }
         }
+        
+        return countA > countB;
     }
 };
