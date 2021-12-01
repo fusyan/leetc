@@ -1,2 +1,1 @@
-# leetcode
-解いた分
+leetcode解いたやつ
